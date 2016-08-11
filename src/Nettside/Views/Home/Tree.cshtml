@@ -19,8 +19,13 @@
     canvas.height = window.innerHeight;
     var ctx = canvas.getContext('2d');
     var generation = 0;
-    var tree = new Branch(100);
+    var tree = new Branch(random(50,90));
+    var tree2 = new Branch(random(50,90));
+    var tree3 = new Branch(random(50,90));
     draw();
+    draw2();
+    draw3();
+
     function draw() {
         ctx.save();
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -29,6 +34,23 @@
         ctx.restore();
         window.requestAnimationFrame(draw);
     }
+
+    function draw2() {
+        ctx.save();
+        ctx.translate(canvas.width / 2 + (canvas.width / 4), canvas.height - 100);
+        tree2.render();
+        ctx.restore();
+        window.requestAnimationFrame(draw2);
+    }
+
+    function draw3() {
+        ctx.save();
+        ctx.translate(canvas.width / 2 - (canvas.width / 4), canvas.height - 100);
+        tree3.render();
+        ctx.restore();
+        window.requestAnimationFrame(draw3);
+    }
+
     function Branch(size, rotation) {
         generation++;
         var sway = 0;
